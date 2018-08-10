@@ -233,34 +233,35 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide>
-          <Heading size={1} fit caps>
-            16,868+ ★
-            </Heading>
-          <Heading size={2} fit caps>
-            18M+ downloads
-            </Heading>
-          <Heading size={1} fit caps >
-            900+ LGTM, 180+ 👷
-            </Heading>
-        </Slide>
 
         <Slide bgColor="black">
           <Heading size={1} textColor="white" >
-            Demo
+            如何設置
           </Heading>
           <Image fit src={images.priere.replace("/", "")} height="500" padding="20" />
         </Slide>
 
+
         <Slide>
           <Heading size={1}>
-            Great!
+            需要有以下的條件
           </Heading>
-          <Image fit src={images.greatBut.replace("/", "")} height="400" padding="20" />
-          <Text textColor="white" fit>But wait, how do you manage SSL certs?</Text>
+          <List fit textColor="white">
+            <Appear><ListItem>Ingress</ListItem></Appear>
+            <Appear><ListItem>Traefik Config (.toml)</ListItem></Appear>
+            <Appear><ListItem>Traefik Deployment/DaemonSet</ListItem></Appear>
+            <Appear><ListItem>Secrets (For SSL certificate)</ListItem></Appear>
+          </List>
         </Slide>
-
-
+        
+        <Slide>
+          <CodePane
+            lang="jsx"
+            source={require('raw-loader!../assets/deck.example')}
+            margin="20px auto"
+            overflow="overflow"
+          />
+        </Slide>
         <Slide>
           <Heading size={1}>
             Official image
