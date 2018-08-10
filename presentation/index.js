@@ -7,6 +7,7 @@ import {
   BlockQuote,
   Cite,
   CodePane,
+  Code,
   Deck,
   Fill,
   Heading,
@@ -207,17 +208,26 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Heading textColor="white" >
-            功能 (持續增加中)
+            功能
             </Heading>
           <List fit textColor="white">
             <Appear><ListItem>Single binary</ListItem></Appear>
             <Appear><ListItem>Small image & Fast</ListItem></Appear>
-            <Appear><ListItem>Backends: Docker, Swarm, Kubernetes, Mesos / Marathon, Rancher, Consul, Etcd...</ListItem></Appear>
             <Appear><ListItem>Hot reloading</ListItem></Appear>
-            <Appear><ListItem>Load-balancing: WRR, DRR</ListItem></Appear>
-            <Appear><ListItem>Circuit breakers</ListItem></Appear>
             <Appear><ListItem>Websockets／HTTP2</ListItem></Appear>
             <Appear><ListItem>HTTPS</ListItem></Appear>
+
+          </List>
+        </Slide>
+
+        <Slide>
+          <Heading textColor="white" >
+            功能
+            </Heading>
+          <List fit textColor="white">
+            <Appear><ListItem>Backends: Docker, Swarm, Kubernetes, Mesos / Marathon, Rancher, Consul, Etcd...</ListItem></Appear>
+            <Appear><ListItem>Load-balancing: WRR, DRR</ListItem></Appear>
+            <Appear><ListItem>Circuit breakers</ListItem></Appear>
             <Appear><ListItem>Monitoring system:  Prometheus, DataDog or StatD</ListItem></Appear>
 
           </List>
@@ -235,33 +245,101 @@ export default class Presentation extends React.Component {
 
 
         <Slide bgColor="black">
-          <Heading size={1} textColor="white" >
-            如何設置
+          <Heading size={3} textColor="white" >
+            如何在Kubernetes 使用Traefik?
           </Heading>
           <Image fit src={images.priere.replace("/", "")} height="500" padding="20" />
         </Slide>
 
 
         <Slide>
-          <Heading size={1}>
-            需要有以下的條件
+          <Heading size={2} textColor="white">
+            需要有以下的設置
           </Heading>
           <List fit textColor="white">
-            <Appear><ListItem>Ingress</ListItem></Appear>
-            <Appear><ListItem>Traefik Config (.toml)</ListItem></Appear>
+            <Appear><ListItem>Traefik Ingress</ListItem></Appear>
+            <Appear><ListItem>Traefik Services</ListItem></Appear>
             <Appear><ListItem>Traefik Deployment/DaemonSet</ListItem></Appear>
-            <Appear><ListItem>Secrets (For SSL certificate)</ListItem></Appear>
+            <Appear><ListItem textColor="green">Traefik Config (.toml)</ListItem></Appear>
+            <Appear><ListItem textColor="green">Secrets (For SSL certificate)</ListItem></Appear>
           </List>
         </Slide>
         
-        <Slide>
+
+        {/* <Slide>
+          <Heading size={3} textColor="white">
+            Traefik RBAC
+          </Heading>
           <CodePane
-            lang="jsx"
-            source={require('raw-loader!../assets/deck.example')}
+            lang="yaml"
+            source={require('raw-loader!../assets/traefik-rbac.yaml')}
             margin="20px auto"
             overflow="overflow"
           />
         </Slide>
+
+        <Slide>
+          <Heading size={3} textColor="white">
+            Traefik Deployment & Services
+          </Heading>
+          <CodePane
+            lang="yaml"
+            source={require('raw-loader!../assets/traefik-deployment.yaml')}
+            margin="20px auto"
+            overflow="overflow"
+          />
+        </Slide>
+
+        <Slide>
+          <Heading size={3} textColor="white">
+            Cheese services
+          </Heading>
+          <CodePane
+            lang="yaml"
+            source={require('raw-loader!../assets/cheese-services.yaml')}
+            margin="20px auto"
+            overflow="overflow"
+          />
+        </Slide>
+
+        <Slide>
+          <Heading size={3} textColor="white">
+            Cheese deployments
+          </Heading>
+          <CodePane
+            lang="yaml"
+            source={require('raw-loader!../assets/cheese-deployments.yaml')}
+            margin="20px auto"
+            overflow="overflow"
+          />
+        </Slide>
+        */}
+
+        <Slide >
+          <Heading size={1}>
+            YAMLs
+          </Heading>
+          <Text >
+            <Link href="https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-rbac.yaml">Traefik RBAC</Link>
+          </Text>
+          <Text  >
+            <Link href="https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-deployment.yaml">Traefik Deployment & Services</Link>
+          </Text>
+          <Text >
+            <Link href="https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/cheese-services.yaml">Cheese services</Link>
+          </Text>
+          <Text >
+            <Link href="https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/cheese-deployments.yaml">Cheese deployment</Link>
+          </Text>
+        </Slide>
+
+        <Slide bgColor="black">
+          <Heading size={1} textColor="white" >
+            Demo
+          </Heading>
+          <Image fit src={images.priere.replace("/", "")} height="500" padding="20" />
+        </Slide>
+
         <Slide>
           <Heading size={1}>
             Official image
@@ -269,147 +347,17 @@ export default class Presentation extends React.Component {
           <Text textColor="white">
             $ docker pull traefik
           </Text>
-          <Image fit src={images.dockerImage.replace("/", "")} height="400" padding="20" />
-        </Slide>
-
-        <Slide>
-          <Heading size={1} caps  >
-            Traefik v1.1
-          </Heading>
-          <Image src={images.camembert.replace("/", "")} height="300" />
-          <Heading size={1} caps  >
-            camembert
-          </Heading>
         </Slide>
 
         <Slide bgColor="white">
-          <Heading size={3} fit>
-            What's new?
+          <Heading size={3} textColor="primary">
+            為什麼會關注到traefik?          
           </Heading>
-          <Heading size={1} fit caps textColor="primary">
-            Cluster mode,
-            Swarm mode
-          </Heading>
-          <Heading size={2} fit caps>
-            Generic Mesos,
-            Basic Auth
-          </Heading>
-          <Heading size={1} fit caps textColor="primary">
-            Session affinity
-          </Heading>
-        </Slide>
- 
-        <Slide>
-          <Heading size={1} caps  >
-            Traefik v1.2
-          </Heading>
-          <Image src={images.morbier.replace("/", "")} height="200" />
-          <Heading size={1} caps  >
-            morbier
-          </Heading>
+          <Image fit src={images.k8s.replace("/", "")} height="200" padding="20" />
+         <Text>vs</Text>
+          <Image fit src={images.traefik.replace("/", "")} height="200" padding="20" />
         </Slide>
 
-        <Slide bgColor="white">
-          <Heading size={3} fit>
-            What's new?
-          </Heading>
-          <Heading size={1} fit caps textColor="primary">
-            Rancher, Eureka
-          </Heading>
-          <Heading size={2} fit caps>
-            Prometheus,
-            Healthchecks
-          </Heading>
-          <Heading size={1} fit caps textColor="primary">
-            Traefik bug
-          </Heading>
-        </Slide>
-
-        <Slide bgColor="white">
-          <Heading size={1} caps textColor="primary" >
-            Traefik v1.3
-          </Heading>
-          <Image src={images.raclette.replace("/", "")} height="500" />
-        </Slide>
-
-
-        <Slide bgColor="white">
-          <Heading size={3} fit>
-            What's new?
-          </Heading>
-          <Heading size={1} fit caps textColor="primary">
-            Basic auth frontend
-          </Heading>
-          <Heading size={2} fit caps>
-            dynamodb
-          </Heading>
-          <Heading size={1} fit caps textColor="primary">
-            dashboard filter
-          </Heading>
-        </Slide>
-
-        <Slide bgColor="white">
-          <Heading size={1} caps textColor="primary" >
-            Traefik v1.4
-          </Heading>
-          <Image src={images.roquefort.replace("/", "")} height="500" />
-        </Slide>
-        
-        <Slide bgColor="white">
-          <Heading size={2} fit caps>
-            GRPC - Auth Forward
-          </Heading>
-          <Heading size={1} fit caps textColor="primary">
-            SSL Redirect,
-            Custom error pages
-          </Heading>
-          <Heading size={2} fit caps>
-            Custom Headers,
-            Datadog, Statd
-          </Heading>
-          <Heading size={1} fit caps textColor="primary">
-            Proxy Protocol
-          </Heading>
-          <Heading size={2} fit caps>
-            HSTS, New Doc...
-          </Heading>
-        </Slide>
-
-        <Slide>
-          <Heading size={1} fit caps>
-            10.000+ ★
-            </Heading>
-          <Heading size={2} fit caps>
-            18M+ downloads
-            </Heading>
-          <Heading size={1} fit caps >
-            900+ LGTM, 180+ 👷
-            </Heading>
-        </Slide>
-
-        <Slide bgColor="black">
-          <Image src={images.birthday.replace("/", "")} height="600" />
-        </Slide>
-
-        <Slide >
-          <Heading size={1} caps >
-            We just
-            </Heading>
-          <Image src={images.money.replace("/", "")} height="300" />
-          <Heading size={1} caps >
-            raised €1M !
-            </Heading>
-        </Slide>
-
-        <Slide bgColor="white">
-          <Heading size={1} caps textColor="primary" textSize="170">
-            I have
-            </Heading>
-          <Image src={images.traefik.replace("/", "")} height="200" />
-          <Heading size={1} caps textColor="primary">
-            Stickers!
-            </Heading>
-        </Slide>
 
         <Slide >
           <Heading size={1} caps  >
@@ -422,10 +370,7 @@ export default class Presentation extends React.Component {
             <Link href="https://twitter.com/traefikproxy">@traefikproxy</Link>
           </Text>
           <Text >
-            <Link href="https://github.com/emilevauge">@emilevauge</Link>
-          </Text>
-          <Text >
-            <Link href="https://emilevauge.github.io/devFestToulouse2017">emilevauge.github.io/devFestToulouse2017</Link>
+            <Link href="https://docs.traefik.io/user-guide/kubernetes/">traefik kubernetes guide</Link>
           </Text>
         </Slide>
       </Deck>
