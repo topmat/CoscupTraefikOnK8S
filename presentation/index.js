@@ -106,11 +106,22 @@ export default class Presentation extends React.Component {
             <Heading size={6} textColor="primary" >
             用 Traefik 來簡化及統一網站流量管理
             </Heading>
-            {/* <Heading size={1} textColor="primary">
-              great again !
-            </Heading> */}
             <Text margin="80" >Mat Chen — COSCUP 2018</Text>
           </Slide>
+
+          <Slide>
+            <Heading size={3} textColor="white" >
+            今日的投影片
+            </Heading>
+
+           <Text textColor="black" margin="80">
+             https://topmat.github.io/coscup2018traefik/
+           </Text>
+
+           <Text textColor="black" margin="80">
+              https://goo.gl/Ga79Mc (短網址)
+           </Text>
+        </Slide>
 
         <Slide>
           <Heading textColor="white" >
