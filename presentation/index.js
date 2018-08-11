@@ -51,6 +51,7 @@ const images = {
   stop: require("../assets/figures/stop.gif"),
   traefikArchitecture: require("../assets/figures/traefikArchitecture.png"),
   traefikInternalArchitecture: require("../assets/figures/traefikInternalArchitecture.png"),
+  traefikArchitectureHighlight: require("../assets/figures/traefikArchitectureHighlight.png"),
   priere: require("../assets/figures/priere.jpg"),
   greatBut: require("../assets/figures/greatBut.gif"),
   letsEncrypt: require("../assets/figures/letsencrypt-logo.svg"),
@@ -69,6 +70,7 @@ const images = {
   money: require("../assets/figures/money.gif"),
   roquefort: require("../assets/figures/traefik-roquefort.png"),
   birthday: require("../assets/figures/traefik.birthday.jpg"),
+  love: require("../assets/figures/love.png"),
   
   
 
@@ -118,8 +120,8 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>從事軟體網站開發17年以上</ListItem></Appear>
             <Appear><ListItem>前Yahoo!工程師</ListItem></Appear>
             <Appear><ListItem>主力是後端</ListItem></Appear>
-            <Appear><ListItem>對優化開發工作/軟體架構/DevOps有著高度的興趣</ListItem></Appear>
-            <Appear><ListItem>CEO 伽博有限公司</ListItem></Appear>
+            <Appear><ListItem><Image src={images.love.replace("/", "")} fit height="40" /> K8S & Docker</ListItem></Appear>
+            <Appear><ListItem>CEO兼工友 at 伽博有限公司</ListItem></Appear>
           </List>
         </Slide>
 
@@ -229,7 +231,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Load-balancing: WRR, DRR</ListItem></Appear>
             <Appear><ListItem>Circuit breakers</ListItem></Appear>
             <Appear><ListItem>Monitoring system:  Prometheus, DataDog or StatD</ListItem></Appear>
-
+            <Appear><ListItem>API</ListItem></Appear>
           </List>
         </Slide>
 
@@ -356,6 +358,44 @@ export default class Presentation extends React.Component {
           <Image fit src={images.k8s.replace("/", "")} height="200" padding="20" />
          <Text>vs</Text>
           <Image fit src={images.traefik.replace("/", "")} height="200" padding="20" />
+        </Slide>
+
+        <Slide bgColor="white">
+          <Heading size={3} textColor="primary">
+            省錢? What?         
+          </Heading>
+          <Image fit src={images.traefikArchitectureHighlight.replace("/", "")} height="400" padding="20" />
+        </Slide>
+        
+
+        <Slide>
+          <Heading size={2} textColor="white">
+            Use case
+          </Heading>
+
+          <Appear>
+            <List fit textColor="black">
+              <ListItem>Side project</ListItem>
+              <ListItem>Development env(dev/stage/CI/CD)</ListItem>
+              <ListItem>Corprate environment</ListItem>
+              <ListItem>Small traffic website</ListItem>
+
+            </List>
+          </Appear>
+        </Slide>
+
+        <Slide>
+          <Heading size={2} textColor="white">
+            總結
+          </Heading>
+
+          <Appear>
+            <List fit textColor="black">
+              <ListItem>好東西，就全面使用吧?</ListItem>
+              <ListItem>要使用就得花時間照顧</ListItem>
+              <ListItem>大流量的使用建議</ListItem>
+            </List>
+          </Appear>
         </Slide>
 
 
